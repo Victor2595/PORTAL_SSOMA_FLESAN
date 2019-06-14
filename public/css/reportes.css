@@ -1,0 +1,36 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+#containerTE {
+	height: 400px;
+	min-width: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#containerTFCA {
+	height: 400px;
+	min-width: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#containerTFSA {
+	height: 400px;
+	min-width: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#containerGravedad {
+	height: 400px;
+	min-width: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#containerAccidentabilidad {
+	height: 400px;
+	min-width: 300px;
+	max-width: 800px;
+	margin: 0 auto;
+}

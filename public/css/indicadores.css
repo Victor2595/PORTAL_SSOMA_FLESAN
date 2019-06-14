@@ -1,0 +1,235 @@
+.wrapper .content-wrapper .card-img-top{
+  width: 100%; 
+  height: 25%; 
+  position: relative;
+  float: left;
+}
+
+.section-principal{
+	margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
+.section-principal .section-principal-primer{
+	display: flex;
+	align-items: center;
+}
+
+.wrapper .content-wrapper .texto_inicio_img{
+    text-align: center;
+}
+
+.flex-box-1{
+  display:flex;justify-content:space-between;
+  width:100%;
+}
+
+.flex-box-1-box.first-section{
+  width:95%
+}
+
+.home-porque-item{
+  display:flex;padding:20px 5px;
+  justify-content:flex-start
+}
+
+.home-porque-item-texto{
+  align-self:center;
+  min-width:350px;width:350px
+  }
+
+.home-porque-item-texto span{
+  width:100%;
+  display:block;
+  font-family:"Open Sans";
+  font-weight:400!important;
+  font-size:30px;
+  color:#565655;
+  line-height:1.1
+}
+
+.conocenos-container-flex-item .first-line,.home-clientes-desc{
+  font-family:"Open Sans Light","Open Sans",arial;
+  font-weight:100
+}
+
+.home-porque-item-texto .barra-roja{
+  margin-left:0;
+  margin-top:10px
+}
+
+.home-porque-item-img img{
+  max-width:900px;
+  width:90%;
+  margin-left:20px;
+  min-width:340px
+}
+
+.flex-box-1-box.fixed-nuestros-proyectos.home-section2{
+  padding:50px 0;
+}
+
+.texto-first-f{
+  padding:20px 0;
+  width:80%!important;
+  min-width:250px
+}
+
+.texto-first-f.first-somos{
+  font-weight: bold;
+}
+
+.barra-roja{
+  background-color:red;
+  height:4px;
+  width:80px;
+  margin:0 auto
+}
+
+@media (max-width: 991px) {
+
+}
+
+#intro {
+  display: table;
+  width: 100%;
+  height: 70vh;
+  background: #ecf0f5;
+}
+
+#intro .carousel-item {
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#intro .carousel-item::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#intro .carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#intro .carousel-content {
+  text-align: center;
+}
+
+#intro h2 {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 45px;
+  font-weight: 100;
+}
+
+@media (max-width: 768px) {
+  #intro h2 {
+    font-size: 28px;
+  }
+}
+
+#intro p {
+  width: 80%;
+  margin: 0 auto 30px auto;
+  color: #fff;
+}
+
+
+@media (min-width: 1024px) {
+  #intro p {
+    width: 60%;
+  }
+}
+#intro .carousel-fade .carousel-inner .carousel-item {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+#intro .carousel-fade .carousel-inner .carousel-item,
+#intro .carousel-fade .carousel-inner .active.carousel-item-left,
+#intro .carousel-fade .carousel-inner .active.carousel-item-right {
+  opacity: 0;
+}
+
+#intro .carousel-fade .carousel-inner .active,
+#intro .carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
+#intro .carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
+  opacity: 1;
+  transition: 5.0s;
+}
+
+#intro .carousel-fade .carousel-inner .carousel-item-next,
+#intro .carousel-fade .carousel-inner .carousel-item-prev,
+#intro .carousel-fade .carousel-inner .active.carousel-item-left,
+#intro .carousel-fade .carousel-inner .active.carousel-item-right {
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+#intro .carousel-control-prev, #intro .carousel-control-next {
+  width: 10%;
+}
+
+@media (min-width: 1024px) {
+  #intro .carousel-control-prev, #intro .carousel-control-next {
+    width: 5%;
+  }
+}
+
+#intro .carousel-control-next-icon, #intro .carousel-control-prev-icon {
+  background: none;
+  font-size: 32px;
+  line-height: 1;
+}
+
+#intro .carousel-indicators li {
+  cursor: pointer;
+}
+
+#intro .btn-get-started {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #e51906;
+}
+
+btn-get-started:hover {
+  background: #fff;
+  color: #e51906;
+}
+#intro1 .btn-get-started{
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #e51906;
+}

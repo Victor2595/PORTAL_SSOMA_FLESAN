@@ -84,6 +84,7 @@ function cancelar(){
 	$("#inputEmpresa").val("");
 	$("#idEmpresa").val("");
 	$("#mensaje").prop("style","display : none");
+	$("#btnGrabar").html('<i class="fas fa-user-plus"></i> Grabar');
 	$("#selectPerfil").empty();
 	$("#selectPerfil").append("<option value='-1' selected>Seleccione Perfil</option>");
 	$.get('/perfil', function(datax){

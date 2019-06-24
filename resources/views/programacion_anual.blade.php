@@ -7,7 +7,9 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @if(is_array(request()->session()->get('avatar')))
+          <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @endif      
       </div>
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
@@ -107,16 +109,16 @@
       @if(count($proyec) != 0)
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="{{ route('principal') }}">SSOMA</a>
+            <a href="{{ route('principal') }}">SSOMAC</a>
         </li>
         <li class="breadcrumb-item active">Programación Anual</li>
       </ol>
       <div class="box">
         <div class="box-header">
           @if(count($proyec) != 0)
-            <h3 class="box-title"><i class="glyphicon glyphicon-list-alt"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional y Medio Ambiente - "{{  $proyec[0]->nombre_proyecto }}"</h3> 
+            <h3 class="box-title"><i class="glyphicon glyphicon-list-alt"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional, Medio Ambiente y Calidad - "{{  $proyec[0]->nombre_proyecto }}"</h3> 
           @else
-              <h3 class="box-title"><i class="glyphicon glyphicon-list-alt"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional y Medio Ambiente</h3>
+              <h3 class="box-title"><i class="glyphicon glyphicon-list-alt"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional, Medio Ambiente y Calidad</h3>
           @endif
         </div>
         <div class="box-body">

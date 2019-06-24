@@ -7,7 +7,9 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @if(is_array(request()->session()->get('avatar')))
+          <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @endif      
       </div>
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
@@ -112,7 +114,7 @@
               <div class="carousel-item active" style="background-image: url('{{ asset('img/dvc-portada.png') }}');">
                 <div class="carousel-container">
                   <div class="carousel-content">
-                    <h2 style="font-family: Open Sans Light,Open Sans,arial;">"Bienvenido al Portal SSOMA"</h2>
+                    <h2 style="font-family: Open Sans Light,Open Sans,arial;font-weight: bold;color:#222D32;text-shadow: 2px 2px #FFFFFF">"Bienvenido al Portal SSOMAC"</h2>
                   </div>
                 </div>
               </div>     
@@ -139,6 +141,11 @@
               <div class="home-porque-item">
                 <div class="home-porque-item-texto">
                   <span>MEDIO AMBIENTE</span><p style="margin-top:10px"></p><hr class="barra-roja">
+                </div>
+              </div>
+              <div class="home-porque-item">
+                <div class="home-porque-item-texto">
+                  <span>CALIDAD</span><p style="margin-top:10px"></p><hr class="barra-roja">
                 </div>
               </div>
           </div>

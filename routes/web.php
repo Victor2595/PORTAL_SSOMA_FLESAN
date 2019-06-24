@@ -10,7 +10,11 @@ Route::get("/","Auth\LoginController@index")->name('welcome');
 Route::get("/principal","ControllerPortal@create")->name('principal');
 Route::get("/administracion_usuarios","ControllerPortal@lista_adm_user")->name('administracion_usuarios');
 Route::get("/administracion_usuarios/{id}/inactivar","ControllerPortal@cambiar_state_user")->name('states_usuarios');
+Route::get("/administracion_usuarios/{id}/update","ControllerPortal@updateUser")->name('update_usuarios');
 Route::post("/administracion_usuarios/grabarUsuariosNew","ControllerPortal@grabarUsuarios")->name('grabar_usuarios');
+Route::get("/usuarios_informacion_carga/{email}","ControllerPortal@cargaUser")->name('carga_user');
+Route::get("/empresas","ControllerPortal@cargaEmpresa")->name('carga_empresa');
+Route::get("/perfil","ControllerPortal@cargaPerfil")->name('carga_perfil');
 
 //API ROUTES
 Route::get("/configuracion_proyecto_registro/{id}","ProyectoController@getProyectos");
@@ -70,24 +74,10 @@ Route::get("/reportes_indicadores/all","ReportesController@reportes_indicadores"
 Route::get("/reportes_consolidados","ReportesController@reportes_consolidados")->name('reportes_consolidados');
 Route::get("/reportes_indicadores","ReportesController@reportes_generar")->name('reportes_generar');
 
+//Route::post("/usuarios_informacion_carga","ControllerPortal@cargaUser")->name('carga_user');
 
-//Rutas Login
-/*Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');*/
-// Rutas de Registro
-/*if ($options['register'] ?? true) {
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'Auth\RegisterController@register');
-}*/
-//Rutas para reseteo de Contraseña
-/*if ($options['reset'] ?? true) {
-    Route::resetPassword();
-}*/
-// Rutas Verificacion de Correo
-/*if ($options['verify'] ?? false) {
-    Route::emailVerification();
-}*/
+
+
 
 
 

@@ -114,6 +114,7 @@ class LoginController extends Controller
         $authUser->provider = strtoupper($provider);
         $authUser->provider_id = $user->id;
         $authUser->estado_sesion = 1;
+        $authUser->estado_validacion = 1;
         $authUser->save();
 
         if($authUser){

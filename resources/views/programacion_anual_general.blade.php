@@ -7,7 +7,9 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @if(is_array(request()->session()->get('avatar')))
+          <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @endif
       </div>
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
@@ -106,23 +108,23 @@
     <section class="content ">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="{{ route('principal') }}">SSOMA</a>
+            <a href="{{ route('principal') }}">SSOMAC</a>
         </li>
         <li class="breadcrumb-item active">Programación Anual General</li>
       </ol>
       <div class="box">
         <div class="box-header">
-            <h3 class="box-title hidden-xs hidden-sm hidden-md"><i class="fa fas fa-table"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional y Medio Ambiente</h3>
-            <h3 class="box-title hidden-xs hidden-sm hidden-lg" style="font-size: 85%"><i class="fa fas fa-table"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional y Medio Ambiente</h3>
-            <h3 class="box-title hidden-xs hidden-lg hidden-md" style="font-size: 85%"><i class="fa fas fa-table"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional y Medio Ambiente</h3>
-            <h3 class="box-title hidden-lg hidden-sm hidden-md" style="font-size: 90%"><i class="fa fas fa-table"></i> PLV SSOMA</h3>
+            <h3 class="box-title hidden-xs hidden-sm hidden-md"><i class="fa fas fa-table"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional, Medio Ambiente y Calidad</h3>
+            <h3 class="box-title hidden-xs hidden-sm hidden-lg" style="font-size: 85%"><i class="fa fas fa-table"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional, Medio Ambiente y Calidad</h3>
+            <h3 class="box-title hidden-xs hidden-lg hidden-md" style="font-size: 85%"><i class="fa fas fa-table"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional, Medio Ambiente y Calidad</h3>
+            <h3 class="box-title hidden-lg hidden-sm hidden-md" style="font-size: 90%"><i class="fa fas fa-table"></i> PLV SSOMAC</h3>
         </div>
         <div class="box-body">
           <table class="table table-bordered" id="dataTableP" width="100%" cellspacing="0">
             <thead class="hidden-xs hidden-sm hidden-md">
               <tr>
                 <th style="font-size: 90%">Proyecto</th>
-                <th style="font-size: 90%">Jefe SSOMA</th>
+                <th style="font-size: 90%">Jefe SSOMAC</th>
                 <th style="font-size: 90%">Periodo</th>
                 <th style="font-size: 90%">PLV TOTAL</th>
                 <th style="font-size: 90%">ACCIÓN</th>
@@ -131,7 +133,7 @@
             <tfoot class="hidden-xs hidden-sm hidden-md">
               <tr>
                 <th style="font-size: 90%">Proyecto</th>
-                <th style="font-size: 90%">Jefe SSOMA</th>
+                <th style="font-size: 90%">Jefe SSOMAC</th>
                 <th style="font-size: 90%">Periodo</th>
                 <th style="font-size: 90%">PLV TOTAL</th>
                 <th style="font-size: 90%">ACCIÓN</th>
@@ -153,7 +155,7 @@
             <thead class="hidden-xs hidden-sm hidden-lg">
               <tr>
                 <th style="font-size: 85%">Proyecto</th>
-                <th style="font-size: 85%">Jefe SSOMA</th>
+                <th style="font-size: 85%">Jefe SSOMAC</th>
                 <th style="font-size: 85%">Periodo</th>
                 <th style="font-size: 85%">PLV TOTAL</th>
                 <th style="font-size: 85%">ACCIÓN</th>
@@ -162,7 +164,7 @@
             <tfoot class="hidden-xs hidden-sm hidden-lg">
               <tr>
                 <th style="font-size: 85%">Proyecto</th>
-                <th style="font-size: 85%">Jefe SSOMA</th>
+                <th style="font-size: 85%">Jefe SSOMAC</th>
                 <th style="font-size: 85%">Periodo</th>
                 <th style="font-size: 85%">PLV TOTAL</th>
                 <th style="font-size: 85%">ACCIÓN</th>
@@ -184,7 +186,7 @@
             <thead class="hidden-xs hidden-lg hidden-md">
               <tr>
                 <th style="font-size: 80%">Proyecto</th>
-                <th style="font-size: 80%">Jefe SSOMA</th>
+                <th style="font-size: 80%">Jefe SSOMAC</th>
                 <th style="font-size: 80%">Periodo</th>
                 <th style="font-size: 80%">PLV TOTAL</th>
                 <th style="font-size: 80%">ACCIÓN</th>
@@ -193,7 +195,7 @@
             <tfoot class="hidden-xs hidden-lg hidden-md">
               <tr>
                 <th style="font-size: 80%">Proyecto</th>
-                <th style="font-size: 80%">Jefe SSOMA</th>
+                <th style="font-size: 80%">Jefe SSOMAC</th>
                 <th style="font-size: 80%">Periodo</th>
                 <th style="font-size: 80%">PLV TOTAL</th>
                 <th style="font-size: 80%">ACCIÓN</th>
@@ -215,7 +217,7 @@
             <thead class="hidden-lg hidden-sm hidden-md">
               <tr>
                 <th style="font-size: 75%">Proyecto</th>
-                <th style="font-size: 75%">Jefe SSOMA</th>
+                <th style="font-size: 75%">Jefe SSOMAC</th>
                 <th style="font-size: 75%">Periodo</th>
                 <th style="font-size: 75%">PLV TOTAL</th>
                 <th style="font-size: 75%">ACCIÓN</th>
@@ -224,7 +226,7 @@
             <tfoot class="hidden-lg hidden-sm hidden-md">
               <tr>
                 <th style="font-size: 75%">Proyecto</th>
-                <th style="font-size: 75%">Jefe SSOMA</th>
+                <th style="font-size: 75%">Jefe SSOMAC</th>
                 <th style="font-size: 75%">Periodo</th>
                 <th style="font-size: 75%">PLV TOTAL</th>
                 <th style="font-size: 75%">ACCIÓN</th>

@@ -7,7 +7,9 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @if(is_array(request()->session()->get('avatar')))
+          <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @endif
       </div>
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
@@ -107,7 +109,7 @@
     @if($datosProyecto != null)
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-          <a href="{{ route('principal') }}">SSOMA</a>
+          <a href="{{ route('principal') }}">SSOMAC</a>
       </li>
       <li class="breadcrumb-item">
         <a href="{{ route('programacion_anual') }}">Programación Anual</a>
@@ -118,7 +120,7 @@
       <div class="col-md-12 col-lg-12">
         <div class="box" id="ConfiProNuevo">
           <div class="box-header">
-            <h3 class="box-title"><i class="fa fas fa-cogs"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional y Medio Ambiente - "{{ $datosProyecto->nombre_proyecto }}"</h3>
+            <h3 class="box-title"><i class="fa fas fa-cogs"></i> Programa de Liderazgo Visible en Seguridad, Salud Ocupacional, Medio Ambiente y Calidad - "{{ $datosProyecto->nombre_proyecto }}"</h3>
           </div>
           <div class="box-body">
             <form method="POST" action="/programacion_anual_registro/import-excel" enctype="multipart/form-data">

@@ -6,7 +6,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Portal SSOMA</title>
+        <title>Portal SSOMAC</title>
         <link  rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
@@ -32,6 +32,7 @@
         <!-- Styles -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="css/login.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <!--<script language=javascript>
             var signinWin;
             function nuevaventana(URL){
@@ -43,29 +44,31 @@
     <body>
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">
-                <div class="user_card">
-                    <div class="d-flex justify-content-center">
-                        <div class="brand_logo_container">
-                            <img src="{{ asset('img/login-icono.png') }}" class="brand_logo" alt="Logo">
+                <div class="row" style="margin:auto;">
+                    <div class="col-sm-12 text-center">
+                        <img src="{{ asset('img/login-icono.png') }}" class="brand_logo" alt="Logo"  style="z-index: 7;position: inherit;">
+                        <div class="d-flex justify-content-center  login_container" style="height: 200px;">
+                            <!--<button type="submit" value="Entrar" name="button" class="btn login_btn" >{{ __('Iniciar Sesión') }}</button>-->
+                            <!--<a href="javascript:nuevaventana('{{ url('auth/google') }}')"  target="_parent" class="btn_google"><img src="{{ asset('img/logo_google.jpg') }}" class="btn_g"> Signed in with Google</a>-->
+                            <div class="col-lg-6 col-md-8">
+                                <div class="user_card" style="top: -60px;">
+                                    <div class="text-center">
+                                        <br><br>
+                                        <a href="{{ url('auth/google') }}" class="btn btn-primary" style="font-family: Open Sans Light,Open Sans,arial;">
+                                            <i class="fab fa-google text-danger" style="background: white;padding: 5px; border-radius: 3px;"></i> Sign in with Google
+                                        </a>
+                                        <div style="margin: auto; margin-top:5px; font-size: 12px; border-radius: 10px;" class="col-lg-6 p-3 mb-2 bg-secondary text-white"><i class="fab fa-chrome"></i> Sistema optimizado para navegador Google Chrome.</div>
+                                    </div>
+                                </div>
+                            </div>    
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center mt-3 login_container">
-                        <!--<button type="submit" value="Entrar" name="button" class="btn login_btn" >{{ __('Iniciar Sesión') }}</button>-->
-                               
-
-
-                                 <!--<a href="javascript:nuevaventana('{{ url('auth/google') }}')"  target="_parent" class="btn_google"><img src="{{ asset('img/logo_google.jpg') }}" class="btn_g"> Signed in with Google</a>-->
-                                 <a href="{{ url('auth/google') }}"  target="_parent" class="btn_google"><img src="{{ asset('img/logo_google.jpg') }}" class="btn_g"><span> Signed in with Google</span></a>
-
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <div class="logo_grupo_flesan_container">
+                    <div class="col-sm-12 text-center" style="top: -60px;">
                         <img src="{{ asset('img/logo_blanco_flesan_grupo.png') }}" class="logo_grupo_flesan" alt="grupo_flesan">
-                    </div>   
-                    <div class="brand_logo_container3">
-                        <img   class="rounded mx-auto d-block" src="{{ asset('img/logos_fdvc.png') }}" >
-                    </div>                
+                    </div>
+                    <div class="col-sm-12 text-center" style="top: -60px;">
+                        <img   class="rounded mx-auto d-block" src="{{ asset('img/logos_fdvc.png') }}" > 
+                    </div>
                 </div>
             </div>
          </div>

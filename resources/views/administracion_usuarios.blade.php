@@ -7,8 +7,10 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
-      </div>
+       @if(is_array(request()->session()->get('avatar')))
+          <img src="{{ asset(implode(request()->session()->get('avatar'))) }}" class="img-circle" alt="User Image">
+        @endif
+        </div>      
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
         <a ><i class="fa fa-circle text-success"></i> Online</a>
@@ -106,7 +108,7 @@
 		<section class="content ">
 			<ol class="breadcrumb">
 		   		<li class="breadcrumb-item">
-		      		<a style="color :#DD4B39;" href="{{ route('principal') }}">SSOMA</a>
+		      		<a style="color :#DD4B39;" href="{{ route('principal') }}">SSOMAC</a>
 		    	</li>
 		    	<li class="breadcrumb-item active">Administración Usuarios</li>
 		  	</ol>
@@ -143,11 +145,12 @@
 			                	<td style="@if($tabla_user->estado == 1)font-size: 80%@elseif($tabla_user->estado==0)font-size: 80%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->username }}</td>
 			                	<td style="@if($tabla_user->estado == 1)font-size: 80%@elseif($tabla_user->estado==0)font-size: 80%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->estado_sesion }}</td>
 			                	<td>
-			                		@if($tabla_user->estado == 0)
-			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Modificar" style="font-size: 90%;"><i class="fas fa-user-check"></i> ACTIVAR</a>
-			                		@elseif($tabla_user->estado == 1)
-			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Modificar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
+			                		@if($tabla_user->estado == 0 && $tabla_user->estado_validacion == 1)
+			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Activar" style="font-size: 90%;"><i class="fas fa-user-check"></i> ACTIVAR</a>
+			                		@elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
+			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
 			                		@endif
+                          <a href="#" class="btn btn-success btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
 			                	</td>
 			              	</tr>
 			              	@endforeach
@@ -178,11 +181,12 @@
                         <td style="@if($tabla_user->estado == 1)font-size: 80%@elseif($tabla_user->estado==0)font-size: 80%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->username }}</td>
                         <td style="@if($tabla_user->estado == 1)font-size: 80%@elseif($tabla_user->estado==0)font-size: 80%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->estado_sesion }}</td>
                         <td>
-                          @if($tabla_user->estado == 0)
-                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Modificar" style="font-size: 90%;"><i class="fas fa-user-check"></i> ACTIVAR</a>
-                          @elseif($tabla_user->estado == 1)
-                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Modificar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
+                          @if($tabla_user->estado == 0 && $tabla_user->estado_validacion == 1)
+                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Activar" style="font-size: 90%;"><i class="fas fa-user-check"></i> ACTIVAR</a>
+                          @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
+                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
                           @endif
+                          <a  href="#"  class="btn btn-success btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -213,11 +217,12 @@
                         <td style="@if($tabla_user->estado == 1)font-size: 70%@elseif($tabla_user->estado==0)font-size: 70%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->username }}</td>
                         <td style="@if($tabla_user->estado == 1)font-size: 70%@elseif($tabla_user->estado==0)font-size: 70%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->estado_sesion }}</td>
                         <td>
-                          @if($tabla_user->estado == 0)
-                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Modificar" style="font-size: 90%;"><i class="fas fa-user-check"></i></a>
-                          @elseif($tabla_user->estado == 1)
-                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Modificar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
+                          @if($tabla_user->estado == 0 && $tabla_user->estado_validacion == 1)
+                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Activar" style="font-size: 90%;"><i class="fas fa-user-check"></i></a>
+                          @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
+                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
                           @endif
+                          <a  href="#"  class="btn btn-success btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -248,11 +253,12 @@
                         <td style="@if($tabla_user->estado == 1)font-size: 62%@elseif($tabla_user->estado==0)font-size: 62%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->username }}</td>
                         <td style="@if($tabla_user->estado == 1)font-size: 62%@elseif($tabla_user->estado==0)font-size: 62%;font-weight:bold;color:#DD4B39;@endif">{{ $tabla_user->estado_sesion }}</td>
                         <td>
-                          @if($tabla_user->estado == 0)
-                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Modificar" style="font-size: 90%;"><i class="fas fa-user-check"></i></a>
-                          @elseif($tabla_user->estado == 1)
-                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Modificar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
+                          @if($tabla_user->estado == 0 && $tabla_user->estado_validacion == 1)
+                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-success btn-sm modificar" value="Activar" style="font-size: 90%;"><i class="fas fa-user-check"></i></a>
+                          @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
+                          <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
                           @endif
+                          <a  href="#"  class="btn btn-success btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -266,7 +272,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                   <div class="modal-header" style="background-color: #d33724 !important;color: #ffffff">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" onclick="cancelar();" aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Registrar Usuarios</h4>
                   </div>
@@ -274,51 +280,47 @@
                   @csrf
                   <div class="modal-body">
                     <div class="form-grou row">
-                      <div class=" align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <label for="selectEmpresa" >Empresa</label>
-                          <select id="selectEmpresa" required name="selectEmpresa" class="form-control" autofocus="autofocus">
-                            <option value="-1" selected>Seleccione Empresa</option>
-                              @foreach($unidades as $unds)
-                              <option value="{{ $unds->COD_EMPRESA }}">{{ $unds->NOMBRE_EMPRESA }}</option>
-                              @endforeach
-                          </select>
+                      <div class="align-self-center col col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                        <label for="inputEmail">E-Mail Corporativo</label>
+                        <input type="text" class="form-control col-md-9 col-lg-9 col-sm-12 col-xs-12 " id="inputEmail" required="true" name="inputEmail" placeholder="ejemplo@flesan.com.pe">
+                         
+                      </div>
+                      <div class="align-self-center col col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                       <a class="btn btn-danger col-md-4 col-lg-4 col-sm-12 col-xs-12" style="background-color: #ffffff;color:#d31a2b;margin-top: 24px;" onclick="buscarUser()"><i class="fas fa-search"></i> </a>
                       </div>
                     </div>
-                    <br>
                     <div class="form-grou row">
-                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                        <label for="inputTipoDni">Tipo Documento de Identidad</label>
-                       <select id="inputTipoDni" required name="inputTipoDni" class="form-control" autofocus="autofocus">
-                          <option value="-1" selected>Seleccione Empresa</option>
-                          <option value="1">DNI</option>
-                          <option value="2">PASAPORTE</option>
-                       </select>
+                      <div class="align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label id="mensaje" style="color: #d31a2b;display: none" >No hay usuarios encontrados</label>
                       </div>
-                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                        <label for="inputDni" id="lblDni" name="lblDni" style="display: none">DNI</label>
-                        <input type="number" class="form-control" style="display: none" id="inputDni" min="0" name="inputDni" placeholder="Documento Nac. Identidad">
-                      </div>
-                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                        <label for="inputPasaporte" id="lblPasaporte" name="lblPasaporte" style="display: none">PASAPORTE</label>
-                        <input type="number" class="form-control" id="inputPasaporte" min="0" style="display: none" name="inputPasaporte" placeholder="N° Pasaporte">
+                    </div>
+                    <div class="form-grou row">
+                      <div class=" align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label for="inputEmpresa" >Empresa</label>
+                        <input type="text" class="form-control" id="inputEmpresa" min="0" readonly="true" name="inputEmpresa" placeholder="Empresa Grupo Flesan">
+                        <input type="text" class="form-control" id="idEmpresa" style="display: none" min="0" readonly="true" name="idEmpresa" placeholder="id">
                       </div>
                     </div>
                     <br>
                     <div class="form-grou row">
                       <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <label for="inputNombres">Nombres</label>
-                        <input type="text" class="form-control" id="inputNombres" required="true" name="inputNombres" placeholder="Nombres Completos">
+                        <input type="text" class="form-control" id="inputNombres" readonly="true" required="true" name="inputNombres" placeholder="Nombres Completos">
                       </div>
                       <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <label for="inputApellidos">Apellidos</label>
-                        <input type="text" class="form-control" id="inputApellidos" required="true"  name="inputApellidos" placeholder="Apellidos Completos">
+                        <input type="text" class="form-control" id="inputApellidos" readonly="true" required="true"  name="inputApellidos" placeholder="Apellidos Completos">
                       </div>
                     </div>
                     <br>
                     <div class="form-grou row">
-                      <div class=" align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <label for="inputDni" id="lblDni" name="lblDni">DNI/CARNET EXTRANJERIA</label>
+                        <input type="number" class="form-control" id="inputDni" min="0" readonly="true" name="inputDni" placeholder="Documento Nac. Identidad">
+                      </div>
+                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <label for="selectPerfil">Perfil</label>
-                          <select id="selectPerfil" required name="selectPerfil" class="form-control" autofocus="autofocus">
+                          <select id="selectPerfil" required="true" name="selectPerfil" class="form-control" autofocus="autofocus">
                             <option value="-1" required="true" selected>Seleccione Perfil</option>
                               @foreach($perfil as $perf)
                               <option  style="font-size: 90%" value="{{ $perf->id_rol }}">{{ $perf->nombre }}</option>
@@ -327,12 +329,6 @@
                       </div>
                     </div>
                     <br>
-                    <div class="form-grou row">
-                      <div class=" align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <label for="inputEmail">E-Mail Corporativo</label>
-                        <input type="text" class="form-control" id="inputTipoP" required="true" name="inputEmail" placeholder="ejemplo@flesan.com.pe">
-                      </div>
-                    </div>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-danger"><a href="{{ route('grabar_usuarios') }}" style="color:#ffffff"><i class="fas fa-user-plus"></i></a> Guardar</button>

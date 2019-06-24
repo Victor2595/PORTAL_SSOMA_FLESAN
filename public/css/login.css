@@ -14,8 +14,8 @@
                 margin: 0;
             }
 		.user_card {
-			height: 250px;
-			width: 330px;
+			height:	100%;
+			width: 100%;
 			margin-top: auto;
 			margin-bottom: auto;
 			background: #ffffff;
@@ -49,11 +49,9 @@
 			position: absolute;
 			height: 10%;
 			width: 10%;
-			padding: 10px;
 			top: 65%;
 			right: 52%;
 			text-align: center;
-			justify-content: center;
 		}
 		.logo_grupo_flesan{
 			height: 90px;
@@ -118,7 +116,7 @@
 			height: 170px;
 			width: 200px;
 			top: 70%;
-			right: 49%;
+			right: 47%;
 			border-radius: 0%;	
 			padding: 80px;
 			text-align: center;

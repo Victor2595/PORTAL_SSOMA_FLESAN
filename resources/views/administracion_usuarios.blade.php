@@ -150,7 +150,7 @@
 			                		@elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
 			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
 			                		@endif
-                          <a href="#" onclick="editUser({{ $tabla_user->id_aplicacion_usuario}});" class="btn btn-info btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="#" onclick="editUser({{ $tabla_user->id_aplicacion_usuario}});" class="btn btn-primary btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
 			                	</td>
 			              	</tr>
 			              	@endforeach
@@ -186,7 +186,7 @@
                           @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
                           <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
                           @endif
-                          <a  href="#"  class="btn btn-info btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a  href="#"  class="btn btn-primary btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -222,7 +222,7 @@
                           @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
                           <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
                           @endif
-                          <a  href="#"  class="btn btn-info  btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a  href="#"  class="btn btn-primary  btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -258,7 +258,7 @@
                           @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
                           <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
                           @endif
-                          <a  href="#"  class="btn btn-info  btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a  href="#"  class="btn btn-primary  btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach

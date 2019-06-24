@@ -10,10 +10,11 @@ Route::get("/","Auth\LoginController@index")->name('welcome');
 Route::get("/principal","ControllerPortal@create")->name('principal');
 Route::get("/administracion_usuarios","ControllerPortal@lista_adm_user")->name('administracion_usuarios');
 Route::get("/administracion_usuarios/{id}/inactivar","ControllerPortal@cambiar_state_user")->name('states_usuarios');
-Route::get("/administracion_usuarios/{id}/update","ControllerPortal@updateUser")->name('update_usuarios');
+Route::get("/administracion_usuarios/edit/{id}","ControllerPortal@editUser")->name('edit_usuarios');
 Route::post("/administracion_usuarios/grabarUsuariosNew","ControllerPortal@grabarUsuarios")->name('grabar_usuarios');
 Route::get("/usuarios_informacion_carga/{email}","ControllerPortal@cargaUser")->name('carga_user');
 Route::get("/empresas","ControllerPortal@cargaEmpresa")->name('carga_empresa');
+Route::get("/empresas/{id}","ControllerPortal@cargaEmpresaUnica")->name('carga_empresa_u');
 Route::get("/perfil","ControllerPortal@cargaPerfil")->name('carga_perfil');
 
 //API ROUTES

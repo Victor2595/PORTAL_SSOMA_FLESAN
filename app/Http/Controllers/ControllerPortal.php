@@ -52,7 +52,7 @@ class ControllerPortal extends Controller
             $perfil = DB::select('select id_rol,upper(nombre) as nombre from seguridadapp.rol_aplicacion where id_aplicacion = 2');
             $client = new CLient([
             'base_uri' => 'http://192.168.25.26:1337/datos_maestros/',
-            'timeout' => 2.0,
+            //'timeout' => 2.0,
             ]);
             $response2 = $client->request('GET','empresa');
             $unidades = json_decode($response2->getBody( )->getContents());
@@ -111,12 +111,7 @@ class ControllerPortal extends Controller
                             $aplicacion_usuario->estado_validacion = 0;
                             $aplicacion_usuario->nombres = $nombres;
                             $aplicacion_usuario->apellidos = $apellidos;
-                            $aplicacion_usuario->tipo_documento = $tipo;
-                            if($tipo == 1){
-                                $aplicacion_usuario->dni = $dni;
-                            }else if($tipo == 2){
-                                $aplicacion_usuario->pasaporte = $pasaporte;
-                            }
+                            $aplicacion_usuario->dni = $dni;
                             $aplicacion_usuario->save();
 
                             $usuario_rol = new Usuario_Rol();
@@ -176,17 +171,19 @@ class ControllerPortal extends Controller
         return response()->json($perfil);
     }
 
-    public function updateUser($id){
-        /*$user = DB::select('select * from seguridadapp.edit_user('.$id.')');
-        print(json_encode($user));
-        $app = DB::select('select * from ssoma.v_administracion_usuarios_ssoma');
-            $perfil = DB::select('select id_rol,upper(nombre) as nombre from seguridadapp.rol_aplicacion where id_aplicacion = 2');
-            $client = new CLient([
+    public function editUser($id){
+        $usuario = DB::select('select * from seguridadapp.edit_user('.$id.')');
+        return response()->json($usuario);
+    }
+
+    public function cargaEmpresaUnica($id){
+        $client = new CLient([
             'base_uri' => 'http://192.168.25.26:1337/datos_maestros/',
-            'timeout' => 2.0,
-            ]);
-            $response2 = $client->request('GET','empresa');
-            $unidades = json_decode($response2->getBody( )->getContents());
-            return view('administracion_usuarios',compact('app','unidades','perfil','user'));*/
+            //'timeout' => 2.0,
+        ]);
+        $response2 = $client->request('GET','empresa?cod_empresa='.$id);
+        $empresa = json_decode($response2->getBody( )->getContents());
+        return response()->json($empresa);
     }
 }
+

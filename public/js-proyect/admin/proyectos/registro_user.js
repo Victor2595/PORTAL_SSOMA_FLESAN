@@ -2,6 +2,7 @@ function buscarUser(){
 	if($("#inputEmail").val() != "" ){
 		$email = $("#inputEmail").val();
 		$empresa = "";
+			
 		$.get('/usuarios_informacion_carga/'+$email, function(request){
 			if(request.length >= 1){
 			$("#inputDni").val(request[0].pager);
@@ -92,3 +93,27 @@ function cancelar(){
 	});
 }
 
+function editUser($id){
+	var $email = "";
+	var $empresa = "";
+    
+    $.get('/administracion_usuarios/edit/'+$id, function(data){
+    	if(data.length >= 1 ){
+    		$("#inputEmail").val(data[0].username);
+			$("#inputDni").val(data[0].dni);
+			$("#inputNombres").val(data[0].nombres);
+			$("#inputApellidos").val(data[0].apellidos);
+			$("#selectPerfil").val(data[0].id_rol);
+			$("#mensaje").prop("style","display : none");
+			$.get('/empresas/'+data[0].id_empresa, function(request){
+				$("#id_empresa").val(data[0].id_empresa);
+				$("#inputEmpresa").val(request[0].NOMBRE_EMPRESA);
+				
+			});
+			$("#btnGrabar").html('<i class="fas fa-user-plus"></i> Actualizar');
+		}
+    });
+}
+$("#modal-default").on('hidden.bs.modal', function () {
+		cancelar();
+});

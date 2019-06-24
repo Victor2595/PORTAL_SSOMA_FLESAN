@@ -150,7 +150,7 @@
 			                		@elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
 			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
 			                		@endif
-                          <a href="#" class="btn btn-success btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="#" onclick="editUser({{ $tabla_user->id_aplicacion_usuario}});" class="btn btn-success btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
 			                	</td>
 			              	</tr>
 			              	@endforeach
@@ -331,7 +331,7 @@
                     <br>
                   </div>
                   <div class="modal-footer">
-                    <button class="btn btn-danger"><a href="{{ route('grabar_usuarios') }}" style="color:#ffffff"><i class="fas fa-user-plus"></i></a> Guardar</button>
+                    <button class="btn btn-danger" id="btnGrabar"><a href="{{ route('grabar_usuarios') }}" style="color:#ffffff"><i class="fas fa-user-plus"></i></a> Guardar</button>
                   </div>
                 </form>
               </div>

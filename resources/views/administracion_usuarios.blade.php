@@ -150,7 +150,7 @@
 			                		@elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
 			                		<a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
 			                		@endif
-                          <a href="#" onclick="editUser({{ $tabla_user->id_aplicacion_usuario}});" class="btn btn-primary btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a href="#" onclick="editUser({{ $tabla_user->id_aplicacion_usuario}});" class="btn btn-primary btn-sm modificar" data-toggle="modal" data-target="#modal-default-edit" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
 			                	</td>
 			              	</tr>
 			              	@endforeach
@@ -186,7 +186,7 @@
                           @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
                           <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i> INACTIVAR</a>
                           @endif
-                          <a  href="#"  class="btn btn-primary btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a  href="#"  class="btn btn-primary btn-sm modificar" data-toggle="modal" data-target="#modal-default-edit" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -222,7 +222,7 @@
                           @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
                           <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
                           @endif
-                          <a  href="#"  class="btn btn-primary  btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a  href="#"  class="btn btn-primary  btn-sm modificar" data-toggle="modal" data-target="#modal-default-edit" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -258,7 +258,7 @@
                           @elseif($tabla_user->estado == 1 && $tabla_user->estado_validacion == 1)
                           <a href="{{ route('states_usuarios',$tabla_user->id_aplicacion_usuario) }}" class="btn btn-danger btn-sm modificar" value="Inactivar" style="font-size: 80%;"><i class="fas fa-user-times"></i></a>
                           @endif
-                          <a  href="#"  class="btn btn-primary  btn-sm modificar" data-toggle="modal" data-target="#modal-default" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
+                          <a  href="#"  class="btn btn-primary  btn-sm modificar" data-toggle="modal" data-target="#modal-default-edit" value="Modificar" style="font-size: 90%;"><i class="fas fa-pencil-alt"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -286,7 +286,7 @@
                          
                       </div>
                       <div class="align-self-center col col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                       <a class="btn btn-danger col-md-4 col-lg-4 col-sm-12 col-xs-12" style="background-color: #ffffff;color:#d31a2b;margin-top: 24px;" onclick="buscarUser()"><i class="fas fa-search"></i> </a>
+                       <a class="btn btn-danger col-md-4 col-lg-4 col-sm-12 col-xs-12" id="btnBuscar" style="background-color: #ffffff;color:#d31a2b;margin-top: 24px;" onclick="buscarUser()"><i class="fas fa-search"></i> </a>
                       </div>
                     </div>
                     <div class="form-grou row">
@@ -332,6 +332,75 @@
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-danger" id="btnGrabar"><a href="{{ route('grabar_usuarios') }}" style="color:#ffffff"><i class="fas fa-user-plus"></i></a> Guardar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="modal-default-edit">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header" style="background-color: #d33724 !important;color: #ffffff">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Editar Usuario</h4>
+                  </div>
+                <form method="post" action="/administracion_usuarios/{{ $tabla_user->id_aplicacion_usuario }}/updateUsuariosNew">
+                  @csrf
+                  <div class="modal-body">
+                    <div class="form-grou row">
+                      <div class="align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label for="inputEmailEdit">E-Mail Corporativo</label>
+                        <input type="text" class="form-control col-md-12 col-lg-12 col-sm-12 col-xs-12 " readonly="true" id="inputEmailEdit" required="true" name="inputEmailEdit" placeholder="ejemplo@flesan.com.pe">
+                         
+                      </div>
+                      <div class="align-self-center col col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                       <a class="btn btn-danger col-md-4 col-lg-4 col-sm-12 col-xs-12 hidden" id="btnBuscarEdit" style="background-color: #ffffff;color:#d31a2b;margin-top: 24px;" onclick="buscarUser()"><i class="fas fa-search"></i> </a>
+                      </div>
+                    </div>
+                    <div class="form-grou row">
+                      <div class="align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label id="mensajeEdit" style="color: #d31a2b;display: none" >No hay usuarios encontrados</label>
+                      </div>
+                    </div>
+                    <div class="form-grou row">
+                      <div class=" align-self-center col col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <label for="inputEmpresaEdit" >Empresa</label>
+                        <input type="text" class="form-control" id="inputEmpresaEdit" min="0" readonly="true" name="inputEmpresaEdit" placeholder="Empresa Grupo Flesan">
+                        <input type="text" class="form-control" id="idEmpresaEdit" style="display: none" min="0" readonly="true" name="idEmpresaEdit" placeholder="id">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-grou row">
+                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <label for="inputNombresEdit">Nombres</label>
+                        <input type="text" class="form-control" id="inputNombresEdit" readonly="true" required="true" name="inputNombresEdit" placeholder="Nombres Completos">
+                      </div>
+                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <label for="inputApellidosEdit">Apellidos</label>
+                        <input type="text" class="form-control" id="inputApellidosEdit" readonly="true" required="true"  name="inputApellidosEdit" placeholder="Apellidos Completos">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-grou row">
+                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <label for="inputDniEdit" id="lblDniEdit" name="lblDni">DNI/CARNET EXTRANJERIA</label>
+                        <input type="number" class="form-control" id="inputDniEdit" min="0" readonly="true" name="inputDniEdit" placeholder="Documento Nac. Identidad">
+                      </div>
+                      <div class=" align-self-center col col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <label for="selectPerfilEdit">Perfil</label>
+                          <select id="selectPerfilEdit" required="true" name="selectPerfilEdit" class="form-control" autofocus="autofocus">
+                            <option value="-1" required="true" selected>Seleccione Perfil</option>
+                              @foreach($perfil as $perf)
+                              <option  style="font-size: 90%" value="{{ $perf->id_rol }}">{{ $perf->nombre }}</option>
+                              @endforeach
+                          </select>
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-danger" id="btnUpdate"  style="color:#ffffff"><i class="fas fa-user-plus"></i> Actualizar</button>
                   </div>
                 </form>
               </div>

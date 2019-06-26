@@ -213,7 +213,7 @@
           },
 
           yAxis: {
-              categories: [@foreach($fecha_proyecto as $proye){!!json_encode($proye->nombre_proyecto)!!},@endforeach],
+              categories: [@foreach($proyectos as $proye){!!json_encode($proye->nombre_proyecto)!!},@endforeach],
               title: null
           },
 
@@ -255,7 +255,7 @@
           series: [{
               name: 'ESTADO INDICE',
               borderWidth: 1,
-              //data: [[0, 0, 0],[1, 1, 1],[2, 1, 2],[3, 2, 3],[4, 0, 4]],
+              //data: [[0, 0, 0],[1, 1,4],[2, 1, 2],[3, 2, 3],[4, 0, 4]],
               data: [@foreach($list as $lista){!! json_encode($lista) !!},@endforeach],
               dataLabels: {
                   enabled: false,

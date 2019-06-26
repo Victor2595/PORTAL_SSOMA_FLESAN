@@ -185,5 +185,23 @@ class ControllerPortal extends Controller
         $empresa = json_decode($response2->getBody( )->getContents());
         return response()->json($empresa);
     }
+
+    public function updateUsuarios($id, Request $request){
+        if(auth()->user()->rol[0]->id_rol == 6){  
+            if($request->selectPerfilEdit != -1){
+                $user = Usuario_Rol::where('id_aplicacion_usuario',$id)->first();
+                $user->id_rol = $request->selectPerfilEdit;
+                $user->save();
+                Alert::success('El usuario se actualizo correctamente','Actualizo');
+                return redirect('/administracion_usuarios');
+            }else{
+                Alert::error('No selecciono un Perfil','Error');
+                return redirect('/administracion_usuarios');
+            }
+        }elseif(auth()->user()->rol[0]->id_rol == 7){
+            Alert::warning('Usted no tiene privlegios para acceder a esta página','Alerta');
+            return redirect('/principal');
+        }
+    }
 }
 

@@ -82,7 +82,7 @@ class ProyectoController extends Controller{
     public function grabarConfiguracionProyecto(Request $request){
         if(auth()->user()->rol[0]->id_rol == 6){    
             $dia = new DateTime();
-            $dat = Dias_Desc::where('regimen',request('selectRegimen'))->where('estado',1)->get(); 
+            //$dat = Dias_Desc::where('regimen',request('selectRegimen'))->where('estado',1)->get(); 
             $config_proyecto = new Proyect;
             $config_proyecto->id_unidad_negocio = request('selectUN');
             $config_proyecto->codigo_proyecto = request('selectProy');
@@ -99,7 +99,7 @@ class ProyectoController extends Controller{
             $config_proyecto->metas_hombre = request('inputMetasH');
             $config_proyecto->regimen =request('selectRegimen');
             $config_proyecto->factor_indicador_especifico_obra =request('inputFactor');
-            $config_proyecto->id_dias_desc = $dat[0]->id_dias_desc ;
+            //$config_proyecto->id_dias_desc = $dat[0]->id_dias_desc ;
             $config_proyecto->id_usuario = request('selectJef');
             $config_proyecto->usuario_registro = auth()->user()->id_aplicacion_usuario ;
             $config_proyecto->fecha_registro = $dia->format('d-m-y');
@@ -273,7 +273,7 @@ class ProyectoController extends Controller{
         if(auth()->user()->rol[0]->id_rol == 6){
             $dia = new DateTime();
             $config_proyecto = Proyect::find($id);
-            $dias_desc = Dias_Desc::where('regimen',request('selectRegimen1'))->where('estado',1)->get();
+            //$dias_desc = Dias_Desc::where('regimen',request('selectRegimen1'))->where('estado',1)->get();
             $jefes = DB::connection('srvdesbdpg')->select('select a.id_aplicacion_usuario,a.id_aplicacion,case when a.name is null then a.username else a.name end username,a.fecha_ini,a.fecha_fin,a.provider,a.provider_id,a.remember_token from seguridadapp.aplicacion_usuario a inner join seguridadapp.usuario_rol u on u.id_aplicacion_usuario = a.id_aplicacion_usuario where a.id_aplicacion = 2 and u.id_rol = 7 and u.id_empresa = \''.$config_proyecto->id_unidad_negocio.'\'');
             $jefe = DB::connection('srvdesbdpg')->select('select p.id_usuario,case when a.name is null then a.username else a.name end username from seguridadapp.aplicacion_usuario a inner join seguridadapp.usuario_rol u on u.id_aplicacion_usuario = a.id_aplicacion_usuario inner join ssoma.tbl_proyecto p on p.id_usuario = a.id_aplicacion_usuario where u.id_rol = 7 and p.id_proyecto =\''.$config_proyecto->id_proyecto.'\'');
             $dat_proyecto = Proyect::where('codigo_proyecto',request('selectProy1'))->where('estado',1)->get();
@@ -367,7 +367,7 @@ class ProyectoController extends Controller{
                             $config_proyecto->metas_hombre = request('inputMetasH1');
                             $config_proyecto->regimen =request('selectRegimen1');
                             $config_proyecto->factor_indicador_especifico_obra =request('inputFactor1');
-                            $config_proyecto->id_dias_desc = $dias_desc[0]->id_dias_desc ;
+                           //$config_proyecto->id_dias_desc = $dias_desc[0]->id_dias_desc ;
                             $config_proyecto->id_usuario = request('selectJef1');
                             $config_proyecto->usuario_modificacion = auth()->user()->id_aplicacion_usuario;
                             $config_proyecto->fecha_modificacion = $dia->format('d-m-y');;
@@ -407,7 +407,7 @@ class ProyectoController extends Controller{
                 $config_proyecto->metas_hombre = request('inputMetasH1');
                 $config_proyecto->regimen =request('selectRegimen1');
                 $config_proyecto->factor_indicador_especifico_obra =request('inputFactor1');
-                $config_proyecto->id_dias_desc = $dias_desc[0]->id_dias_desc ;
+                //$config_proyecto->id_dias_desc = $dias_desc[0]->id_dias_desc ;
                 $config_proyecto->id_usuario = request('selectJef1');
                 $config_proyecto->usuario_modificacion = auth()->user()->id_aplicacion_usuario;
                 $config_proyecto->fecha_modificacion = $dia->format('d-m-y');;

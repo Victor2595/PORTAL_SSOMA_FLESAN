@@ -100,18 +100,17 @@ function editUser($id){
     
     $.get('/administracion_usuarios/edit/'+$id, function(data){
     	if(data.length >= 1 ){
-    		$("#inputEmail").val(data[0].username);
-			$("#inputDni").val(data[0].dni);
-			$("#inputNombres").val(data[0].nombres);
-			$("#inputApellidos").val(data[0].apellidos);
-			$("#selectPerfil").val(data[0].id_rol);
-			$("#mensaje").prop("style","display : none");
+    		$("#inputEmailEdit").val(data[0].username);
+			$("#inputDniEdit").val(data[0].dni);
+			$("#inputNombresEdit").val(data[0].nombres);
+			$("#inputApellidosEdit").val(data[0].apellidos);
+			$("#selectPerfilEdit").val(data[0].id_rol);
+			$("#mensajeEdit").prop("style","display : none");
 			$.get('/empresas/'+data[0].id_empresa, function(request){
-				$("#id_empresa").val(data[0].id_empresa);
-				$("#inputEmpresa").val(request[0].NOMBRE_EMPRESA);
+				$("#id_empresaEdit").val(data[0].id_empresa);
+				$("#inputEmpresaEdit").val(request[0].NOMBRE_EMPRESA);
 				
 			});
-			$("#btnGrabar").html('<i class="fas fa-user-plus"></i> Actualizar');
 		}
     });
 }
